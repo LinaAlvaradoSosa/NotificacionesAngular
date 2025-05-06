@@ -1,0 +1,39 @@
+<div class="pasoApaso">
+    <h3>API para el envio de correos electronicos automticos</h3>
+    <p>Esta API se creó para ayudar a las empresas y a sus clientes con notificaciones por correo electrónico programables. Este proyecto tiene una amplia variedad de aplicaciones empresariales. ¡Puedes probar la funcionalidad de la API a continuación!</p>
+    <a href="https://github.com/LinaAlvaradoSosa/notificaciones" target="_blank"><p>VER API!</p></a>
+    <p>This API has been built to assist businesses and their clients with schedualable email notifications. This project has a wide variety of business applications. You can demo the API functionality below! </p>
+    <a href="https://github.com/LinaAlvaradoSosa/notificaciones" target="_blank"><p>SEE API!</p></a>
+</div>
+<div class="container">
+    <form [formGroup]="formCrearEstudiante">
+        <h2>Solicita una notificación</h2>
+        <label for="name">Nombre:</label>
+        <input formControlName="name" id="name" name="name"/>
+        <label for="email">Correo:</label>
+        <input formControlName="email" id="email" name="email"/>
+        <label for="type">Tipo de Notificación:</label>
+        <select formControlName="paymentsPending" id="type" name="type">
+            <option value="request">Revisión de Documentos</option>
+            <option value="payment">Recordatorio de Pago</option>
+            <option value="none">Sin categoría específica</option>
+        </select>
+        <div class="botones">
+            <label>¿Cuándo enviar?</label>
+            <button type="button" 
+                    (click)="setDelay(0)" 
+                    [class.active]="formCrearEstudiante.get('delayMinutes')?.value === 0">Ahora</button>
+            <button type="button" 
+                    (click)="setDelay(5)" 
+                    [class.active]="formCrearEstudiante.get('delayMinutes')?.value === 5">5 min</button>
+            <button type="button" 
+                    (click)="setDelay(10)" 
+                    [class.active]="formCrearEstudiante.get('delayMinutes')?.value === 10">10 min</button>
+            <button type="button" 
+                    (click)="setDelay(15)" 
+                    [class.active]="formCrearEstudiante.get('delayMinutes')?.value === 15">15 min</button>
+        </div>
+    <button (click)="sendNotification()" type="submit" class="botonSend">Enviar</button>
+    </form>
+</div>
+
