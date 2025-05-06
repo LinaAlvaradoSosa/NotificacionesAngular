@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/notificaciones-formulario",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -28,16 +28,11 @@
             ],
             "styles": [
               "src/styles.css",
-              "/Users/linaalvaradososa/Desktop/proyecto-practicas1-angular/notificaciones-formulario/node_modules/bootstrap/dist/css/bootstrap.rtl.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css"
             ],
             "scripts": [
-              "/Users/linaalvaradososa/Desktop/proyecto-practicas1-angular/notificaciones-formulario/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -53,7 +48,20 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             },
             "development": {
               "optimization": false,
