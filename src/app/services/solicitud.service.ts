@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class SolicitudService {
 
-  apiURL: string = 'http://localhost:3000/api'
+  apiURL: string = 'https://notificaciones-production.up.railway.app/api';
+
 
   constructor(private http: HttpClient) { }
 
